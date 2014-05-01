@@ -2,7 +2,7 @@ CC = gcc
 
 NAME = lib/libftp.a
 
-DEBUG = false
+DEBUG = true
 
 INCLUDES = -Iinclude -I../Lib/include -I/usr/local/include
 

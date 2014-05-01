@@ -6,7 +6,7 @@ typedef struct s_ftp	t_ftp;
 struct		s_ftp
 {
 	int		port;
-
+	int		sock_cmd;
 };
 
 t_ftp	*ft_ftpcreate(void);

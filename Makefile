@@ -4,7 +4,7 @@ NAME = lib/libftp.a
 
 DEBUG = false
 
-INCLUDES = -Iinclude -I../Lib/include
+INCLUDES = -Iinclude -I../Lib/include -I/usr/local/include
 
 CFLAGS = -Wall -Wextra $(INCLUDES) -march=native
 
@@ -66,14 +66,8 @@ Makefile.deps: $(SRCS) $(HEADERS)
 ifeq ($(OS),Darwin)
 	@makedepend $(CFLAGS) -- $(SRCS) > Makefile.deps 2> /dev/null
 else
-	@makedepend -- $(CFLAGS) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
+	@makedepend -- $(INCLUDES) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
 endif
 	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
 
 .PHONY: clean fclean all re test run tests/test.bin lib
-# DO NOT DELETE
-
-src/ft_ftpcreate.o: include/ft_ftp.h ../Lib/include/ft_common.h
-src/ft_ftpcreate.o: /usr/include/unistd.h /usr/include/features.h
-src/ft_ftpcreate.o: /usr/include/stdc-predef.h /usr/include/getopt.h
-src/ft_ftpcreate.o: /usr/include/stdlib.h /usr/include/alloca.h

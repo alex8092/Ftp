@@ -1,5 +1,0 @@
-# DO NOT DELETE
-
-obj/ft_ftpcreate.o: include/ft_ftp.h /usr/include/stdlib.h
-obj/ft_ftpcreate.o: /usr/include/features.h /usr/include/stdc-predef.h
-obj/ft_ftpcreate.o: /usr/include/alloca.h

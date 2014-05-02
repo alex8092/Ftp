@@ -62,12 +62,14 @@ fclean: clean
 
 re: fclean all
 
-Makefile.deps: $(SRCS) $(HEADERS)
 ifeq ($(OS),Darwin)
-	@makedepend $(CFLAGS) -- $(SRCS) > Makefile.deps 2> /dev/null
-else
-	@makedepend -- $(INCLUDES) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
-endif
+Makefile.deps: $(SRCS) $(HEADERS)
+	makedepend $(INCLUDES) --  -- $(SRCS) -f- > Makefile.deps
 	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
+else
+Makefile.deps: $(SRCS) $(HEADERS)
+	@makedepend -- $(INCLUDES) -- $(SRCS) -f- > Makefile.deps 2> /dev/null
+	@\vim Makefile.deps -c '%s/src\//obj\//g' -c wq
+endif
 
 .PHONY: clean fclean all re test run tests/test.bin lib

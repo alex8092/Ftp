@@ -13,7 +13,9 @@ int	main(void)
 	if (ft_ftpconnect(ftp) < 0)
 		return (-1);
 	if ((msg = ft_ftpreadmsg(ftp)))
-		write(1, msg->msg, msg->len_msg);
+	{
+		write(1, msg->msg, (int)msg->len_msg);
+	}
 	close(ftp->sock_cmd);
 	free(ftp);
 	return (0);

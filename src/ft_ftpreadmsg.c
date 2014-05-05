@@ -10,8 +10,6 @@ t_ftpmsg	*ft_ftpreadmsg(t_ftp *ftp)
 	{
 		msg.len_msg = strlen(line);
 		msg.msg = line;
-		printf("line : %s\n", line);
-		printf("line ptr : %p\n", line);
 		return (&msg);
 	}
 	return (NULL);
